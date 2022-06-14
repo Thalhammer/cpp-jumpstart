@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+include("${CMAKE_CURRENT_LIST_DIR}/jumpstart-targets.cmake")
+
+# Add alias, default to static
+if(TARGET jumpstart::jumpstart_static)
+    add_library(jumpstart::jumpstart ALIAS jumpstart::jumpstart_static)
+elseif(TARGET jumpstart::jumpstart_shared)
+    add_library(jumpstart::jumpstart ALIAS jumpstart::jumpstart_shared)
+endif()
